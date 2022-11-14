@@ -1,0 +1,19 @@
+<div class="container mt-3">
+  <div>
+  <p><% @string.each do |letter| %>
+    <%= letter %>
+    <%end%></p>
+    <p>Your score is <%= @score %> points</p>
+
+  </div>
+
+
+  <form action="/score" method="post" data-turbo="false">
+    <input type="text" name="attempt">
+    <button type="submit" class="btn btn-primary" place-holder="Enter your answer here!">Play</button>
+    <%= hidden_field_tag :string, @string.join %>
+    <%= hidden_field_tag :score, @score %>
+    <%= hidden_field_tag :start_time, @start_time %>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  </form>
+</div>
